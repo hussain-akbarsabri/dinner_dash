@@ -1,0 +1,38 @@
+<div class="container-fluid px-3">
+  <h1 class="text-center my-3">Products</h1>
+  <%= form_with url: products_path, local:false, method: :get, class:"mb-5" do |form| %>
+    <div class="row my-2 gx-0">
+      <div class="col-10 p-0">
+        <%= form.select( :category_id, options_for_select(Category.all.collect {|c| [c.title, c.id]}.unshift(['Select Category', ""])), {}, { class: "form-select"})%>
+      </div>
+      <div class="col-2 p-0">
+        <%= form.submit "Search", class: "btn btn-primary w-100" %>
+      </div>
+    </div>
+  <% end %>
+  <%if current_user && current_user.admin?%>
+    <div class="row my-2 gx-0">
+      <div class="col-12 p-0">
+        <%= link_to 'Add New Product', new_product_path,  class: "btn btn-success w-100" %>
+      </div>
+    </div>
+    <%= render partial: '/products/table', locals: {products: @products} %>
+    <br>
+  <%else%>
+    <div class="d-flex flex-wrap justify-content-between" id="products-deck">
+      <% @products.each do |product| %>
+        <%= render partial: '/products/product_show', locals: {product: product} %>
+      <%end%>
+    </div>
+  <%end%>
+  <%= link_to 'Clear Filter', products_path if @is_filtered %>
+
+  <%unless @is_filtered %>
+  <div class="row" >
+    <div class="col-6"></div>
+    <div class="col-6 d-flex justify-content-end">
+      <%= paginate @products%>
+    </div>
+  </div>
+  <%end%>
+</div>

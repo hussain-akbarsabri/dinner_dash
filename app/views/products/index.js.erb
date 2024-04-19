@@ -1,0 +1,6 @@
+var productsHTML = "";
+<% @products.each do |product|%>
+  productsHTML += `<%= render partial: "/products/product_show", locals: {product: product}%>`
+<% end%>
+document.querySelector("#products-deck").innerHTML= productsHTML
+

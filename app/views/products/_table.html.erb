@@ -1,0 +1,40 @@
+<table class="table table-striped">
+  <thead class="bg-dark text-white ">
+    <tr>
+      <th >Image</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th ></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.each do |product| %>
+      <tr>
+        <% if product.image.attached? %>
+          <td><%= cl_image_tag(product.image.url, width: 200, height: 150, :crop=>"scale") %></td>
+        <% end%>
+        <td class="vertical-alignment"><%= product.title %></td>
+        <td class="vertical-alignment"><%= product.description %></td>
+        <td class="vertical-alignment"><%= product.price %></td>
+        <td class="vertical-alignment">
+          <% product.categories.each do |cat| %>
+            <%= cat.title%>
+            <%= ',' unless product.categories.last==cat%>
+          <%end%>
+        </td>
+        <td class="vertical-alignment">
+          <%= link_to 'Show', product, class: "me-3"%>
+          <%= link_to 'Edit', edit_product_path(product), class: "me-3"%>
+          <%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "me-3 link-button"%>
+          <%if product.available%>
+            <%= link_to 'Suspend', retire_product_path(:id => product.id), data: { confirm: 'Are you sure?' }, class: "me-3"%>
+          <%else%>
+            <%= link_to 'Resume', resume_product_path(:id => product.id), data: { confirm: 'Are you sure?' }, class: ""%>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

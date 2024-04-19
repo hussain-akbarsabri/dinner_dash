@@ -1,0 +1,94 @@
+<div class="container-fluid px-3">
+  <h1 class=" fw-bolder text-center my-3">All Orders</h1>
+
+  <div class="row my-3">
+    <div class="col-3 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between px-md-1">
+              <div>
+                <h3 class="text-danger"><%= Order.where(:order_status => 'placed').count%></h3>
+                <p class="mb-0">Placed</p>
+              </div>
+              <div class="align-self-center">
+                <i class="fas fa-shopping-cart text-danger fa-3x"></i></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="col-3 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between px-md-1">
+              <div>
+                <h3 class="text-danger"><%= Order.where(:order_status => 'paid').count%></h3>
+                <p class="mb-0">Paid</p>
+              </div>
+              <div class="align-self-center">
+                <i class="fas fa-shopping-cart text-danger fa-3x"></i></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between px-md-1">
+              <div>
+                <h3 class="text-danger"><%= Order.where(:order_status => 'completed').count%></h3>
+                <p class="mb-0">Completed</p>
+              </div>
+              <div class="align-self-center">
+                <i class="fas fa-shopping-bag text-danger fa-3x"></i></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between px-md-1">
+              <div>
+                <h3 class="text-danger"><%= Order.where(:order_status => 'cancelled').count%></h3>
+                <p class="mb-0">Cancelled</p>
+              </div>
+              <div class="align-self-center">
+                <i class="fas fa-ban text-danger fa-3x"></i></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Total Price</th>
+        <th>Status</th>
+        <th>Order Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@orders.each do |order|%>
+        <tr>
+          <td><%= order.id%></td>
+          <td><%= order.total_price%></td>
+          <td><%= order.order_status%></td>
+          <td><%= link_to 'View order', order %></td>
+          <td class="text-end">
+            <%= link_to 'Mark as paid', root_path, class:"me-2" %>
+            <%= link_to 'Mark as complete', root_path, class:"me-2" %>
+            <%= link_to 'Cancel Order', root_path, class:"me-2" %>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+
+</div>

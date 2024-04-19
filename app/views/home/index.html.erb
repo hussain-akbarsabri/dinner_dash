@@ -1,0 +1,42 @@
+
+<%if user_signed_in? && current_user.admin?%>
+  <div class="" id="admin-screen-container" >
+    <div class="hero-container  px-3 py-4">
+      <h1 class="hero-text">Welcome</h1>
+      <h1 class="hero-text">to</h1>
+      <h1 class="hero-text">Admin Dashboard</h1>
+    </div>
+
+  </div>
+
+<%else%>
+  <div id="carouselExampleIndicators" class="carousel slide homepage-carousel carousel-fade " data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag 'carousel_2.jpg',class:"d-block w-100"  %>
+        <div class="carousel-caption d-none d-md-block ">
+          <h1 class="display-4 fw-bolder rounded ">Life's too short for boring food.
+          </h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag 'carousel_1.jpg',class:"d-block w-100"  %>
+        <div class="carousel-caption d-none d-md-block ">
+          <h1 class="display-4 fw-bolder rounded ">Just like grandma used to make</h1>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<%end%>

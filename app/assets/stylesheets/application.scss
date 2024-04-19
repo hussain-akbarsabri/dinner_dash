@@ -1,0 +1,138 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap";
+ .card {
+
+  .card-body {
+    .price {
+      color: #f57224;
+    }
+  }
+
+  transition: box-shadow .15s;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+  }
+}
+
+.cart-button {
+  transition: all 0.2s;
+
+  &:hover {
+    position: relative;
+    transform: scale(1.1);
+  }
+}
+
+.carousel-caption {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+
+  h1 {
+    background-color: rgba(33, 33, 33, .6);
+  }
+}
+
+.carousel-item {
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#admin-screen-container {
+  background-image: image-url('admin_background.jpg');
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  .hero-container {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    background-color: rgba(33, 33, 33, .6);
+
+    .hero-text {
+      text-align: center;
+      color: white;
+    }
+  }
+}
+
+.gradient-custom-3 {
+  /* fallback for old browsers */
+  background: #84fab0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+}
+.gradient-custom-4 {
+  /* fallback for old browsers */
+  background: #84fab0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+
+.logo-text
+{
+  color: #97C26E;
+  margin-top: 6px;
+  display: inline-block;
+}
+
+.vertical-alignment {
+  vertical-align: middle;
+}
+
+.red-color {
+  color: red
+}
+
+.width-200px {
+  min-width:200px
+}
+
+.height-40px {
+  height: 40px
+}
+
+.height-9rem {
+  height: 9rem
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+  text-decoration: underline;
+}

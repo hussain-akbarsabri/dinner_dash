@@ -1,0 +1,15 @@
+ <% if product.available%>
+    <div class="card mb-4 mx-4">
+      <%= link_to product, class: "text-decoration-none" do%>
+        <%if product.image.attached?%>
+          <%= cl_image_tag(product.image.key, cloud_name: 'dijou1ibj',:width=>200, :height=> 150,:crop=>"scale", class: "height-9rem", class: "card-image-top w-100")%>
+        <%end%>
+        <div class="card-body">
+          <h5 class="card-title mb-0"><%= product.title.capitalize %></h5>
+          <div class="price">Rs. <%= product.price %></div>
+          <p class="card-text text-muted"><%= product.description%></p>
+        </div>
+      <%end%>
+      <%= button_to "Add to cart", line_items_path(:product_id => product.id), method: :post, class: "btn btn-outline-success w-100",  remote: true %>
+    </div>
+<%end%>
